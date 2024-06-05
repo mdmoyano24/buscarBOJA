@@ -37,17 +37,16 @@ The project follows the CRISP-DM methodology, which includes the following phase
 
 Project Structure
 
-plaintext
-
 buscarBOJA/
-├── notebooks/
-│ └── ... (Jupyter notebooks for data analysis and experimentation)
-├── static/
-│ └── ... (Static files for the web application)
-├── templates/
-│ └── ... (HTML templates for the web application)
-├── requirements.txt
-└── README.md
+├── notebooks/  
+│   └── ... (Jupyter notebooks for data analysis and experimentation)  
+├── static/  
+│   └── ... (Static files for the web application)  
+├── templates/  
+│   └── ... (HTML templates for the web application)  
+├── requirements.txt  
+└── README.md  
+
 
 Results
 
