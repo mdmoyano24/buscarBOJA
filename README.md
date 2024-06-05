@@ -37,7 +37,7 @@ The project follows the CRISP-DM methodology, which includes the following phase
 
 Project Structure
 
-buscarBOJA/
+buscarBOJA/  
 ├── notebooks/  
 │   └── ... (Jupyter notebooks for data analysis and experimentation)  
 ├── static/  
