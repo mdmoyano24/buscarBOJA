@@ -39,15 +39,14 @@ Project Structure
 
 plaintext
 
-boja-information-extraction/
-│
+buscarBOJA/
 ├── notebooks/
-│   └── ... (Jupyter notebooks for data analysis and experimentation)
+│ └── ... (Jupyter notebooks for data analysis and experimentation)
 ├── static/
-│   └── ... (Static files for the web application)
+│ └── ... (Static files for the web application)
 ├── templates/
-│   └── ... (HTML templates for the web application)
-├├── requirements.txt
+│ └── ... (HTML templates for the web application)
+├── requirements.txt
 └── README.md
 
 Results
