@@ -1,0 +1,201 @@
+[
+    {
+        "id": "documento_1",
+        "text": "La Junta de Andalucía se reunió con el alcalde de Sevilla, Juan Pérez, en la sede de la Junta en el centro de la ciudad.",
+        "entities": [
+            {"text": "Junta de Andalucía", "label": "ORG", "start": 3, "end": 21},
+			{"text": "Alcalde de Sevilla", "label": "PER", "start": 39 , "end":57},
+            {"text": "Juan Pérez", "label": "PER", "start": 59, "end": 69},
+            {"text": "Sevilla", "label": "LOC", "start": 50, "end": 57},
+            {"text": "Junta", "label": "ORG", "start": 88, "end": 93}
+        ]
+    },
+    {
+        "id": "documento_2",
+        "text": "El presidente de la Diputación de Málaga, Francisco López, anunció nuevas medidas para la ciudad.",
+        "entities": [
+            {"text": "Diputación de Málaga", "label": "ORG", "start": 20, "end": 40},
+            {"text": "Francisco López", "label": "PER", "start": 42, "end": 57},
+            {"text": "Málaga", "label": "LOC", "start": 34, "end": 40},
+            {"text": "ciudad", "label": "LOC", "start": 90, "end": 96}
+        ]
+    },
+    {
+        "id": "documento_3",
+        "text": "La Universidad de Granada es una de las más antiguas de España.",
+        "entities": [
+            {"text": "Universidad de Granada", "label": "ORG", "start": 3, "end": 25},
+            {"text": "España", "label": "LOC", "start": 56, "end": 62}
+        ]
+    },
+	 {
+        "id": "documento_4",
+        "text": "La Junta de Andalucía ha firmado un acuerdo con la Universidad de Sevilla para promover la investigación científica.",
+        "entities": [
+            {"text": "Junta de Andalucía", "label": "ORG", "start": 3, "end": 21},
+            {"text": "Universidad de Sevilla", "label": "ORG", "start": 51, "end": 73}
+        ]
+    },
+    {
+        "id": "documento_5",
+        "text": "El presidente del Gobierno, Pedro Sánchez, visitó la ciudad de Alhama de Granada para inaugurar el nuevo hospital.",
+        "entities": [
+            {"text": "Presidente del Gobierno", "label": "PER", "start": 3, "end": 26},
+            {"text": "Pedro Sánchez", "label": "PER", "start": 28, "end": 41},
+            {"text": "Alhama de Granada", "label": "LOC", "start": 63, "end": 80}
+        ]
+    },
+    {
+        "id": "documento_6",
+        "text": "La empresa tecnológica Indra ha anunciado la apertura de una nueva sede en Málaga.",
+        "entities": [
+            {"text": "Indra", "label": "ORG", "start": 23, "end": 28},
+            {"text": "Málaga", "label": "LOC", "start": 75, "end": 81}
+        ]
+    },
+    {
+        "id": "documento_7",
+        "text": "El alcalde de Córdoba, José María Bellido, presentó el nuevo plan urbanístico para la ciudad.",
+        "entities": [
+            {"text": "alcalde de Córdoba", "label": "PER", "start": 3, "end": 21},
+            {"text": "José María Bellido", "label": "PER", "start": 23, "end": 41},
+            {"text": "Córdoba", "label": "LOC", "start": 14, "end": 21},
+            {"text": "ciudad", "label": "LOC", "start": 84, "end": 90}
+        ]
+    },
+    {
+        "id": "documento_8",
+        "text": "La Feria de Abril de Sevilla es uno de los eventos más importantes de Andalucía.",
+        "entities": [
+            {"text": "Feria de Abril de Sevilla", "label": "MISC", "start": 3, "end": 28},
+            {"text": "Sevilla", "label": "LOC", "start": 20, "end": 26},
+            {"text": "Andalucía", "label": "LOC", "start": 70, "end": 79}
+        ]
+    },
+    {
+        "id": "documento_9",
+        "text": "El Hospital Virgen del Rocío ha recibido una donación de la Fundación La Caixa.",
+        "entities": [
+            {"text": "Hospital Virgen del Rocío", "label": "ORG", "start": 3, "end": 28},
+            {"text": "Fundación La Caixa", "label": "ORG", "start": 60, "end": 78}
+        ]
+    },
+    {
+        "id": "documento_10",
+        "text": "El ministro de Sanidad, Salvador Illa, anunció nuevas medidas para combatir la pandemia.",
+        "entities": [
+            {"text": "ministro de Sanidad", "label": "PER", "start": 3, "end": 22},
+            {"text": "Salvador Illa", "label": "PER", "start": 24, "end": 37}
+        ]
+    },
+    {
+        "id": "documento_11",
+        "text": "La ciudad de Mairena del Alcor acogerá el próximo congreso internacional sobre energías renovables.",
+        "entities": [
+            {"text": "Mairen del Alcor", "label": "LOC", "start": 13, "end": 30},
+            {"text": "congreso internacional sobre energías renovables", "label": "MISC", "start": 50, "end": 99}
+        ]
+    },
+    {
+        "id": "documento_12",
+        "text": "El Ayuntamiento de Jaén ha aprobado el presupuesto para el próximo año fiscal.",
+        "entities": [
+            {"text": "Ayuntamiento de Jaén", "label": "ORG", "start": 3, "end": 22},
+            {"text": "Jaén", "label": "LOC", "start": 19, "end": 22}
+        ]
+    },
+    {
+        "id": "documento_13",
+        "text": "El Festival de Cine de Huelva contará con la participación de numerosos directores internacionales.",
+        "entities": [
+            {"text": "Festival de Cine de Huelva", "label": "MISC", "start": 3, "end": 29},
+            {"text": "Huelva", "label": "LOC", "start": 24, "end": 29}
+        ]
+    },
+    {
+        "id": "documento_14",
+        "text": "El Centro Andaluz de Arte Contemporáneo en Sevilla ha inaugurado una nueva exposición.",
+        "entities": [
+            {"text": "Centro Andaluz de Arte Contemporáneo", "label": "ORG", "start": 3, "end": 39},
+            {"text": "Sevilla", "label": "LOC", "start": 43, "end": 50}
+        ]
+    },
+	 {
+        "id": "documento_15",
+        "text": "El Parque Nacional de Doñana es uno de los espacios naturales más importantes de Europa.",
+        "entities": [
+            {"text": "Parque Nacional de Doñana", "label": "LOC", "start": 3, "end": 28},
+            {"text": "Europa", "label": "LOC", "start": 81, "end": 87}
+        ]
+    },
+    {
+        "id": "documento_16",
+        "text": "La empresa sevillana Abengoa ha firmado un contrato millonario con el gobierno de Chile.",
+        "entities": [
+            {"text": "Abengoa", "label": "ORG", "start": 17, "end": 28},
+            {"text": "Chile", "label": "LOC", "start": 82, "end": 87}
+        ]
+    },
+    {
+        "id": "documento_17",
+        "text": "El poeta Federico García Lorca nació en Fuente Vaqueros, Granada.",
+        "entities": [
+            {"text": "Federico García Lorca", "label": "PER", "start": 9, "end": 30},
+            {"text": "Fuente Vaqueros", "label": "LOC", "start": 40, "end": 55},
+            {"text": "Granada", "label": "LOC", "start": 57, "end": 64}
+        ]
+    },
+    {
+        "id": "documento_18",
+        "text": "El consejero de Economía, Rogelio Velasco, presentó el informe anual del sector industrial en Andalucía.",
+        "entities": [
+            {"text": "consejero de Economía", "label": "PER", "start": 3, "end": 24},
+            {"text": "Rogelio Velasco", "label": "PER", "start": 26, "end": 41},
+            {"text": "Andalucía", "label": "LOC", "start": 94, "end": 103}
+        ]
+    },
+    {
+        "id": "documento_19",
+        "text": "La Feria del Libro de Bollullos de la Mitación ha contado con la participación de escritores de renombre como Isabel Allende y Mario Vargas Llosa.",
+        "entities": [
+            {"text": "Feria del Libro de Bollullos de la Mitación", "label": "MISC", "start": 3, "end": 46},
+            {"text": "Isabel Allende", "label": "PER", "start": 110, "end": 124},
+            {"text": "Mario Vargas Llosa", "label": "PER", "start": 127, "end": 145}
+        ]
+    },
+    {
+        "id": "documento_20",
+        "text": "El presidente de Estados Unidos, Joe Biden, se reunió con su homólogo español, Pedro Sánchez, en la Consejería de Salud y Consumo.",
+        "entities": [
+            {"text": "presidente de Estados Unidos", "label": "PER", "start": 3, "end": 31},
+            {"text": "Joe Biden", "label": "PER", "start": 33, "end": 42},
+            {"text": "Pedro Sánchez", "label": "PER", "start": 79, "end": 92},
+            {"text": "Consejería de Salud y Consumo", "label": "ORG", "start": 92, "end": 123}
+        ]
+    },
+    {
+        "id": "documento_21",
+        "text": "El escritor Gabriel García Márquez es conocido por su obra maestra 'Cien años de soledad'.",
+        "entities": [
+            {"text": "Gabriel García Márquez", "label": "PER", "start": 12, "end": 34},
+            {"text": "'Cien años de soledad'", "label": "MISC", "start": 68, "end": 89}
+        ]
+    },
+    {
+        "id": "documento_22",
+        "text": "La compañía aérea Iberia ha anunciado una nueva ruta entre Madrid y Jerez de la Frontera.",
+        "entities": [
+            {"text": "Iberia", "label": "ORG", "start": 18, "end": 24},
+            {"text": "Madrid", "label": "LOC", "start": 59, "end": 65},
+            {"text": "Jerez de la Frontera", "label": "LOC", "start": 68, "end": 88}
+        ]
+    },
+    {
+        "id": "documento_23",
+        "text": "El grupo musical Estopa ofrecerá un concierto en Alcalá de Guadaira el próximo mes.",
+        "entities": [
+            {"text": "Estopa", "label": "MISC", "start": 17, "end": 23},
+            {"text": "Alcalá de Guadaira", "label": "LOC", "start": 49, "end": 67}
+        ]
+    }
+]
