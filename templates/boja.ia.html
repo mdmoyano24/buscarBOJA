@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador del BOJA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+        }
+        h1 {
+            text-align: center;
+            color: #007bff;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 5px 10px;  /* Narrower buttons */
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        .tab.active {
+            background-color: #007bff;
+            color: white;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        input[type="text"], input[type="date"], select {
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-left: 5px;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        #fechaInicial, #fechaFinal {
+            width: 150px;
+            font-size: 14px;
+            height: auto;
+        }
+        .flex-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #results ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        #results li {
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        #results li strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+        #results a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        #results a:hover {
+            text-decoration: underline;
+        }
+        .highlight {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BOJA<span style="font-weight: normal">.ia</span></h1>
+        <div class="tabs">
+            <div class="tab active" id="tabBOJA">BOJA</div>
+            <div class="tab" id="tabBOE">BOE</div>
+        </div>
+        <form id="searchForm">
+            <input type="hidden" id="searchType" name="searchType" value="BOJA">
+            <input type="text" id="searchInput" placeholder="Buscar por palabra clave..." style="width: 90%;">
+            <button type="submit" id="searchButton">
+                <img src="{{ url_for('static', filename='buscar.png') }}" alt="Icono de búsqueda" border="0" style="width: 30px; height: 30px;">
+            </button>
+            <div class="flex-container">
+                <label for="fechaInicial" style="font-size: 14px; color: #333333;">Desde: </label>
+                <input type="date" id="fechaInicial" name="fechaInicial">
+                <label for="fechaFinal" style="font-size: 14px; color: #333333;">Hasta:</label>
+                <input type="date" id="fechaFinal" name="fechaFinal">
+                <label><input type="radio" name="sortOption" value="relevance" checked> Relevancia</label>
+                <label><input type="radio" name="sortOption" value="date"> Fecha</label>
+            </div>
+        </form>
+        <div id="results"></div>
+
+        <footer style="text-align: left; margin-top: 15px;">
+            <a href="static/docs/ayuda_boja.pdf" target="_blank">
+                <img src="{{ url_for('static', filename='ayuda7.jpg') }}" alt="Ayuda" style="width: 20px; height: 20px;">
+            </a>
+        </footer>
+    </div>
+    <script>
+        const stopwords = ["y", "de", "la", "el", "que", "en", "los", "por", "con", "un", "para", "una", "es", "del", "se", "al", "lo", "como", "más", "o", "pero", "sus", "le", "ya", "o", "muy", "sin", "sobre", "este", "también", "me", "hasta", "hay", "donde", "quien", "desde", "todo", "nos", "durante", "todos", "uno", "les", "ni", "contra", "otros", "ese", "eso", "ante", "ellos", "e", "esto", "mí", "antes", "algunos", "qué", "unos", "yo", "otro", "otras", "otra", "él", "tanto", "esa", "estos", "mucho", "quienes", "nada", "muchos", "cual", "poco", "ella", "estar", "estas", "algunas", "algo", "nosotros", "mi", "mis", "tú", "te", "ti", "tu", "tus", "ellas", "nosotras", "vosotros", "vosotras", "os", "mío", "mía", "míos", "mías", "tuyo", "tuya", "tuyos", "tuyas", "suyo", "suya", "suyos", "suyas", "nuestro", "nuestra", "nuestros", "nuestras", "vuestro", "vuestra", "vuestros", "vuestras", "esos", "esas", "estoy", "estás", "está", "estamos", "estáis", "están", "esté", "estés", "estemos", "estéis", "estén", "estaré", "estarás", "estará", "estaremos", "estaréis", "estarán", "estaría", "estarías", "estaríamos", "estaríais", "estarían", "estaba", "estabas", "estábamos", "estabais", "estaban", "estuve", "estuviste", "estuvo", "estuvimos", "estuvisteis", "estuvieron", "estuviera", "estuvieras", "estuviéramos", "estuvierais", "estuvieran", "estuviese", "estuvieses", "estuviésemos", "estuvieseis", "estuviesen", "estando", "estado", "estada", "estados", "estadas"];
+
+        function highlightKeywords(text, keywords, color="orange") {
+            let words = text.split(/\s+/);
+            let highlightedText = words.map(word => {
+                let cleanWord = word.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").toLowerCase();
+                if (keywords.includes(cleanWord)) {
+                    return `<span style="background-color: ${color};">${word}</span>`;
+                } else {
+                    return word;
+                }
+            });
+            return highlightedText.join(" ");
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('tabBOJA').addEventListener('click', function() {
+                document.getElementById('searchType').value = 'BOJA';
+                document.getElementById('tabBOJA').classList.add('active');
+                document.getElementById('tabBOE').classList.remove('active');
+            });
+
+            document.getElementById('tabBOE').addEventListener('click', function() {
+                document.getElementById('searchType').value = 'BOE';
+                document.getElementById('tabBOE').classList.add('active');
+                document.getElementById('tabBOJA').classList.remove('active');
+            });
+
+            document.getElementById('searchForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                const keyword = document.getElementById('searchInput').value;
+                const fechaInicial = document.getElementById('fechaInicial').value;
+                const fechaFinal = document.getElementById('fechaFinal').value;
+                const searchType = document.getElementById('searchType').value;
+                const sortOptions = document.getElementsByName('sortOption');
+                let sortOption = '';
+                for (let option of sortOptions) {
+                    if (option.checked) {
+                        sortOption = option.value;
+                        break;
+                    }
+                }
+
+                // Eliminar stopwords de los keywords
+                let keywords = keyword.split(/\s+/).filter(word => !stopwords.includes(word.toLowerCase()));
+
+                fetch('/search', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        query: keyword,
+                        startDate: fechaInicial,
+                        endDate: fechaFinal,
+                        sortBy: sortOption,
+                        searchType: searchType
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    let results = data.result;
+
+                    // Ordenar por fecha si sortOption es "date"
+                    if (sortOption === 'date') {
+                        results.sort((a, b) => new Date(b.Fecha) - new Date(a.Fecha));
+                    }
+
+                    const resultsContainer = document.getElementById('results');
+                    resultsContainer.innerHTML = '';  // Clear previous results
+
+                    if (results.length === 0) {
+                        resultsContainer.innerHTML = '<p>No se han encontrado resultados.</p>';
+                    } else {
+                        const ul = document.createElement('ul');
+                        results.forEach(result => {
+                            const li = document.createElement('li');
+                            const highlightedSumario = highlightKeywords(result.Sumario, keywords);
+                            const highlightedCuerpo = highlightKeywords(result.Cuerpo, keywords);
+                            li.innerHTML = `<strong>ID:</strong> ${result.ID} <br>
+                                            <strong>URL:</strong> <a href='${result.URL}' target='_blank'>${result.URL}</a> <br>
+                                            <strong>Fecha:</strong> ${result.Fecha} <br>
+                                            <strong>Sumario:</strong> ${highlightedSumario} <br>
+                                            <strong>Fragmento del cuerpo:</strong> ${highlightedCuerpo}`;
+                            ul.appendChild(li);
+                        });
+                        resultsContainer.appendChild(ul);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    const resultsContainer = document.getElementById('results');
+                    resultsContainer.innerHTML = '<p>No se han encontrado resultados.</p>';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
